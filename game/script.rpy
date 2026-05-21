@@ -1,13 +1,6 @@
 ﻿# ==========================================
 # RESACA Y HORIZONTE - SCRIPT EJECUTABLE (ASSETS COMENTADOS)
 # ==========================================
-# INSTRUCCIONES: 
-# 1. Copia y pega este código en script.rpy
-# 2. Ejecuta el proyecto. Funcionará sin imágenes/audio.
-# 3. Cuando tengas los assets, descomenta las líneas marcadas con # 
-#    (elimina el # y el espacio inicial).
-# ==========================================
-
 define l = Character("Leo", color="#c8a2ff")
 define b = Character("Bernard", color="#ff9e5e")
 define n = Character("", color="#a0a0a0")
