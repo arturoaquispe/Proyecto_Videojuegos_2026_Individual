@@ -1,6 +1,7 @@
 ﻿# ==========================================
 # RESACA Y HORIZONTE - SCRIPT EJECUTABLE (ASSETS COMENTADOS)
 # ==========================================
+
 define l = Character("Leo", color="#c8a2ff")
 define b = Character("Bernard", color="#ff9e5e")
 define n = Character("", color="#a0a0a0")
@@ -53,8 +54,8 @@ label act1:
 
     # play sound phone_vibrate.mp3
     n "El teléfono vibra. Bernard."
-    b "[Mensaje] Cancha pública. 7PM. Trae hielos. Necesito despejarme de la tesis."
-    b "[Mensaje] Tú también lo necesitas. No preguntes."
+    b "*Mensaje* Cancha pública. 7PM. Trae hielos. Necesito despejarme de la tesis."
+    b "*Mensaje* Tú también lo necesitas. No preguntes."
 
     menu:
         "Responder 'Voy' sin pensarlo.":
@@ -67,7 +68,7 @@ label act1:
             $ bernard_tie = "close"
             $ drinking = "controlled"
             l "¿Todo bien? La tesis no te deja ni respirar, ¿no?"
-            b "[Audio] Me subo y me bajo de golpe. Hoy quiero solo no pensar."
+            b "*Audio* Me subo y me bajo de golpe. Hoy quiero solo no pensar."
             n "No es un drama. Es un cansancio real."
 
         "Proponer: 'Vamos si primero ordeno dos párrafos del proyecto'.":
@@ -75,7 +76,7 @@ label act1:
             $ bernard_tie = "close"
             $ impulse = 0
             l "Te llevo a la cancha si me ayudas a revisar lo que tengo. Trato."
-            b "[Audio] Negociando como adulto. Me gusta. Dame 20. Paso por ti."
+            b "*Audio* Negociando como adulto. Me gusta. Dame 20. Paso por ti."
             n "No es heroísmo. Es poner un límite pequeño."
 
     jump act2
@@ -119,12 +120,12 @@ label act2:
 # ESCENA: CANCHA AMATEUR (ESPEJO EXTERNO)
 # ==========================================
 label act2_court:
-    # scene bg_court_morning with fade
+    scene cancaha_de_baloncesto1 with fade
     # play music "ball_bounce_cheap.mp3" fadein 1.0
     # show bernard stretching at center with dissolve
     # show leo walking at left with dissolve
 
-    n "La cancha de la esquina. Aros con malla rota. Tres vecinos ya están jugando 2vs2."
+    n "La cancha de la esquina. Aros con malla desgastada. Cuatro vecinos ya están jugando 2vs2."
     n "No hay uniforme, ni árbitro, ni entrenador. Solo risas y rebotes torcidos."
 
     b "Llegaste. Creí que te habías quedado pegado a la cama."
@@ -168,22 +169,22 @@ label act2_court:
     b "¿Tú cómo vas con el electivo?"
 
     menu:
-        "Decir la verdad: 'No sé ni por dónde empezar, pero no quiero dejarlo'." if avoidance <= 1 else "Mentir: 'Va bien. Solo le falta pulir'." if avoidance == 2:
-            if avoidance <= 1:
-                l "No sé ni por dónde empezar, pero no quiero dejarlo a medias."
-                b "Eso es suficiente. No tiene que ser perfecto, solo tiene que avanzar."
-                $ bernard_tie = "close"
-            else:
-                l "Va bien. Solo le falta pulir."
-                b "¿Seguro? Suena a que lo estás posponiendo."
-                $ bernard_tie = "broken" if drinking == "heavy" else "strained"
+        "Decir la verdad: 'No sé ni por dónde empezar, pero no quiero dejarlo'." if avoidance <= 1:
+            l "No sé ni por dónde empezar, pero no quiero dejarlo a medias."
+            b "Eso es suficiente. No tiene que ser perfecto, solo tiene que avanzar."
+            $ bernard_tie = "close"
+
+        "Mentir: 'Va bien. Solo le falta pulir'." if avoidance == 2:
+            l "Va bien. Solo le falta pulir."
+            b "¿Seguro? Suena a que lo estás posponiendo."
+            $ bernard_tie = "broken" if drinking == "heavy" else "strained"
 
         "Cambiar de tema. Hablar de la cancha, de los vecinos, de nada.":
             n "El balón rebota. El tema se desvía. La pregunta queda flotando."
             b "Tú siempre cambiando de marcha. Está bien. No voy a presionarte."
 
         "Quedarte callado. Asentir. Seguir mirando el juego.":
-            $ avoidance = 2 if avoidance < 2 else avoidance
+            $ avoidance = 2
             n "No respondes. El silencio se vuelve pesado. Bernard lo nota."
             b "Si no quieres hablar, está bien. Pero no te pierdas, hermano."
 
@@ -243,7 +244,7 @@ label path_bridge:
     # play music "hopeful_strings.mp3" fadein 1.0
     n "El título no es el destino. Es el puente."
     l "Termino para poder elegir. No para tener todas las respuestas."
-    b "[Audio] Mañana cancha. Trae tu mejor cara de superviviente."
+    b "*Audio* Mañana cancha. Trae tu mejor cara de superviviente."
     n "Sonríes. No por el futuro. Por el presente que por fin dejas avanzar."
     jump ending_bridge
 
